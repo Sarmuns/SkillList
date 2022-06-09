@@ -1,5 +1,5 @@
 
-![](https://imgur.com/a/0dLsNMV)
+![](http://imgur.com/a/0dLsNMV.gif)
 
 > A skill list that you can add and remove your skills from a list
 
