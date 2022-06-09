@@ -7,17 +7,43 @@ import {
   StyleSheet,
   TextInput,
   FlatList,
+  Alert
 } from 'react-native';
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
+interface skillData {
+  id : string;
+  name : string;
+}
+
 export function Home(){
   const [newSkill, setNewSkill] = useState('');
-  const [mySkills, setMySkills] = useState([]);
+  const [mySkills, setMySkills] = useState<skillData[]>([]);
   const [greetings, setGreetings] = useState('');
 
   function handleAddNewSkill(){
-    setMySkills(oldState => [...mySkills, newSkill]);
+    const data = {
+      id : String(new Date().getTime()),
+      name : newSkill
+    }
+    setMySkills(oldState => [...oldState, data]);
+  }
+
+  function handleRemoveSkill(id: string){
+    Alert.alert(
+      "Do you want to delete this skill?",
+      "",
+      [
+        {
+          text: "No",
+        },
+        { text: "Yes", onPress: () => setMySkills(oldState => oldState.filter(
+          skill => skill.id !== id
+        )) }
+      ]
+    );
+    
   }
 
 
@@ -54,7 +80,10 @@ export function Home(){
       value={newSkill}
       />
 
-      <Button onPress={handleAddNewSkill}/>
+      <Button 
+      title="Add"
+      onPress={handleAddNewSkill}
+      />
 
       <Text style={[styles.title, {marginVertical: 30}]}>
         My skills
@@ -62,9 +91,12 @@ export function Home(){
 
     <FlatList
       data={mySkills}
-      keyExtractor={item => item}
+      keyExtractor={item => item.id}
       renderItem={({item}) => (
-        <SkillCard skill={item} />
+        <SkillCard
+         skill={item.name}
+         onPress={() => handleRemoveSkill(item.id)}
+         />
       )}
     />
 
