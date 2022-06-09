@@ -62,14 +62,14 @@ export function Home(){
 
   return (
     <View style={styles.container}>
+
       <Text style={styles.title}>
-        Samuel Rocha
+        My skill list
       </Text>
 
       <Text style={styles.greetings}>
         {greetings}
       </Text>
-
 
 
       <TextInput
