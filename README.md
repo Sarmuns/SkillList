@@ -6,7 +6,7 @@
 
 ## 🚀 Installing the Skill list
 
-To install the skill list, follow you'll need react native already configurated in your machine
+To install the skill list, first you'll need react native already configured in your machine
 after that enter the project folder and run the following commands:
 
 ```
