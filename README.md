@@ -17,7 +17,3 @@ for android devices
 ```
 yarn android
 ```
-for ios devices
-```
-yarn ios
-```
